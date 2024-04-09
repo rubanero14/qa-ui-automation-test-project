@@ -1,0 +1,7 @@
+"execute test on specific files" => clear; python -m pytest tests/test_load_delay.py --verbose;
+"generate HTML report" => clear; python -m pytest -m utility --html=report.html;
+"staging" => clear; git add .; git commit -m "added code documentation"; git push
+
+
+
+
