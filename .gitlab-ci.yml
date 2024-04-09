@@ -1,0 +1,33 @@
+stages:
+    - test
+
+image:
+    # The image is not available from docker hub but being pulled from the actual fqdn of the 'mcr.microsoft.com' registry
+    # if it's in dockerhub, should be able to the latest release from https://hub.docker.com/r/datadog/agent/tags
+    # Currently the Nexus repository not support the mirrorring from other registry other than dockerhub.io
+    name: mcr.microsoft.com/playwright/python:v1.35.0-focal # https://mcr.microsoft.com/v2/playwright/python/tags/list
+
+
+mini_project:
+    stage: test
+    tags:
+        - docker
+        - nonprod
+    before_script:
+        - echo "To install package dependencies"
+        - pip install -r requirements.txt
+        - playwright install
+    script:
+        - ls -ltr 
+        - pytest tests/test_load_delay.py  --html=test_reports/report.html 
+    artifacts:
+        when: always
+        paths:
+            - test_reports/*
+        reports:
+            junit: test_reports/*.xml
+        expire_in: 5 days
+    rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" || $CI_PIPELINE_SOURCE == "web" # If merge request OR the pipeline is triggered by 'Run pipeline' button, always run the job manually
+      when: manual
+      allow_failure: true

@@ -1,0 +1,24 @@
+pyotp==2.8.0
+playwright==1.40.0
+requests==2.31.0
+pytest==7.1.2 # 7.3.2 does not work as it is missing `py` package. `py.xml` cannot be found
+pytest-base-url==2.0.0
+pytest-bdd==6.1.1
+pytest-forked==1.6.0
+pytest-html==3.2.0
+pytest-html-reporter==0.2.9
+pytest-metadata==1.11.0 # Cannot upgrade to latest
+pytest-order==1.1.0
+pytest-playwright==0.3.3
+pytest-variables==3.0.0
+pytest-xdist==3.3.1
+python-dateutil==2.8.2
+python-dotenv==1.0.0
+python-slugify==8.0.1
+filelock==3.12.2
+pytest-rerunfailures==11.1.2
+fpdf==1.7.2
+requests-toolbelt==1.0.0
+pandas==2.0.2
+openpyxl== 3.0.10 # 3.1.2 Not able to open specific spreadsheet (e.g. Service Availability) in Excel https://github.com/pandas-dev/pandas/issues/53238
+pytest-dependency==0.6.0

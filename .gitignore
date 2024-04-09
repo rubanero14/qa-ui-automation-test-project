@@ -1,5 +1,7 @@
 _init_.py
 .venv/
-_pycache_/
+*/_pycache_/
 assets/
 *.html
+*/pytest_cache
+archive
